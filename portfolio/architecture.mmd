@@ -1,0 +1,11 @@
+flowchart LR
+    U[User] --> F[Browser UI]
+    F --> J[JavaScript Client]
+    J --> B[Flask Backend]
+    B --> C[OpenAI-compatible API]
+    C --> M1[auto-oao-1]
+    C --> M2[Claude family]
+    C --> M3[DeepSeek family]
+    C --> M4[Gemini family]
+    C --> M5[GLM / other models]
+    B --> H[Benchmark Endpoint]

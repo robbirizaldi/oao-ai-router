@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f0e7">
+  <title>Multi-Model AI Router</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/lib/common.min.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="identity">
+        <div class="logo">O</div>
+        <div>
+          <div class="eyebrow">Personal AI Lab</div>
+          <h1>OAO Router</h1>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="chat">Chat</button>
+        <button class="nav-item" data-view="benchmark">Benchmark</button>
+      </nav>
+
+      <button id="newChat" class="primary-btn">＋ New conversation</button>
+
+      <div class="field">
+        <label for="modelSelect">Active model</label>
+        <select id="modelSelect"></select>
+      </div>
+
+      <div class="history-block">
+        <div class="eyebrow">Recent chats</div>
+        <div id="historyList" class="history-list"></div>
+      </div>
+
+      <div class="sidebar-footer">
+        <span class="dot"></span>
+        <span id="healthText">Checking backend…</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">Multi-model AI client</div>
+          <div id="topModel" class="top-model">auto-oao-1</div>
+        </div>
+        <div class="top-actions">
+          <button id="themeToggle" class="icon-btn" title="Toggle theme">◐</button>
+          <button id="clearCurrent" class="ghost-btn">Clear</button>
+        </div>
+      </header>
+
+      <section id="chatView" class="view active">
+        <div id="messages" class="messages"></div>
+
+        <div id="welcome" class="welcome">
+          <div class="symbol">✦</div>
+          <h2>One interface.<br>Multiple models.</h2>
+          <p>Experiment, compare, and chat without leaving this workspace.</p>
+          <div class="prompt-grid">
+            <button data-prompt="Explain the bias-variance trade-off with a practical machine learning example.">ML concept</button>
+            <button data-prompt="Review this Python approach and suggest improvements for production use.">Code review</button>
+            <button data-prompt="Compare SMOTE, class weighting, and threshold tuning for an imbalanced classifier.">Modeling strategy</button>
+          </div>
+        </div>
+
+        <form id="chatForm" class="composer">
+          <textarea id="prompt" placeholder="Ask something..." rows="1"></textarea>
+          <div class="composer-bar">
+            <span>Enter to send · Shift+Enter for new line</span>
+            <button id="sendButton" class="send-btn" type="submit">Send ↑</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="benchmarkView" class="view benchmark-view">
+        <div class="benchmark-head">
+          <div>
+            <div class="eyebrow">Model evaluation</div>
+            <h2>Compare the same prompt across models.</h2>
+          </div>
+          <div class="benchmark-note">Measured locally from request start to response completion.</div>
+        </div>
+
+        <div class="benchmark-form">
+          <textarea id="benchmarkPrompt" rows="5" placeholder="Enter a prompt for comparison...">Explain when class weighting is preferable to SMOTE for an imbalanced classification problem.</textarea>
+          <div id="benchmarkModels" class="checks"></div>
+          <button id="runBenchmark" class="primary-btn">Run benchmark</button>
+        </div>
+
+        <div id="benchmarkResults" class="benchmark-results"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
