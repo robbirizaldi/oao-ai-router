@@ -3,3 +3,6 @@
 __pycache__/
 *.pyc
 .vscode/
+docs/screenshots/*.jpg
+docs/screenshots/*.jpeg
+docs/screenshots/*.webp
